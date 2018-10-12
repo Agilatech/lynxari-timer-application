@@ -1,0 +1,34 @@
+{
+    "requests": [
+        {
+            "class": "transition",
+            "command": {
+                "execute": "change-output",
+                "arguments": ["high"],
+                "server": "bldg1",
+                "device_name": "NorthLight"
+            },            
+            "schedule": {
+                "sun":  {
+                    "position": "nauticalDusk",
+                    "latitude": 32.949009,
+                    "longitude": -105.140349
+                }
+            }
+        },
+        {
+            "class": "transition",
+            "command": {
+                "execute": "change-output",
+                "arguments": ["low"],
+                "server": "bldg1",
+                "device_name": "NorthLight"
+            },            
+            "schedule": {
+                "second": "0",
+                "minute": "30",
+                "hour": "22"
+            }
+        }
+    ]
+}

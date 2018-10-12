@@ -1,0 +1,48 @@
+{
+    "requests": [
+        {
+            "class": "transition",
+            "command": {
+                "execute": "transitionName",
+                "arguments": [],
+                "server": "deviceServer",
+                "device_name": "deviceName",
+                "device_type": "deviceType",
+                "device_id": "deviceId"
+            },            
+            "schedule": {
+                "second": "*",
+                "minute": "*",
+                "hour": "*",
+                "day_of_month": "*",
+                "month": "*",
+                "day_of_week": "*",
+                "sun":  {
+                    "position": "sunPosition",
+                    "latitude": 35.78,
+                    "longitude": -78.649999
+                }
+            }
+        },
+        {
+            "class": "shell",
+            "command" : {
+                "execute": "commandName",
+                "arguments": ["argv1", "argv2"]
+            },
+            "schedule": {
+                "second": "*",
+                "minute": "*",
+                "hour": "*",
+                "day_of_month": "*",
+                "month": "*",
+                "day_of_week": "*",
+                "sun": {
+                    "position": "sunPosition",
+                    "latitude": 35.78,
+                    "longitude": -78.649999
+                }
+            }
+        }
+    ]
+}
