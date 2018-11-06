@@ -27,19 +27,15 @@ module.exports = class Timer {
     this.validateSchedule();
     this.concatenateSchedule();
 
-    this.cronjob = new cron.CronJob(this.cronpattern, this.onTickFunction, this.onCompFunction);
+    this.cronjob = new cron.CronJob(this.cronpattern, this.onTickFunction);
 
     this.usingSun = this.checkSunInput();
 
     if (this.usingSun) {
       // if using sunrise, sunset, etc, then register a callback when the cron fires
-      this.onCompFunction = this.resetTimeToNextSunEvent;
+      //this.onCompFunction = this.resetTimeToNextSunEvent;
       // since this is the first time, the sun position time must be calculated
       this.resetTimeToNextSunEvent();
-    }
-    else {
-      // otherwise we don't need a function on completion
-      this.onCompFunction = null;
     }
 
     this.cronjob.start();
@@ -63,7 +59,12 @@ module.exports = class Timer {
 
   fireDeviceRequest() {
     if (this.device != null) {
-      this.device.call(this.request.command.execute, ...this.request.command.arguments);
+        if (this.request.command.hasOwnProperty('arguments')) {
+            this.device.call(this.request.command.execute, ...this.request.command.arguments);
+        }
+        else {
+            this.device.call(this.request.command.execute);
+        }
     }  
   }
 
@@ -79,6 +80,7 @@ module.exports = class Timer {
     const crontime = new cron.CronTime(this.getNextSunTime());
     
     this.cronjob.setTime(crontime);
+    this.cronjob.addCallback(this.resetTimeToNextSunEvent.bind(this));
     this.cronjob.start();
   }
 

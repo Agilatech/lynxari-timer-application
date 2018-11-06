@@ -1,6 +1,9 @@
 ![Lynxari IoT Platform](https://agilatech.com/images/lynxari/lynxari200x60.png) **IoT Platform**
 ## Lynxari Timer Application
 
+### Schedule events according to sun position or schedule
+
+
 ### Install
 ```
 $> npm install @agilatech/lynxari-timer-application
@@ -21,10 +24,9 @@ A _config.json_ configuration file must be present in the module's main director
 
 
 ### Configuration
-The _config.json_ file defines an array of requests to be scheduled. Each request fully defines the event to be carried out and the schedule to be followed. the three main elements of a request are the class, the command, and the schedule.
+The _config.json_ file defines an array of requests to be scheduled. Each request fully defines the event to be carried out and the schedule to be followed. The three main elements of a request are the class, the command, and the schedule.
 
-**class** : Must be one of **shell | transition** The 'shell' class is used to trigger an operating system call, such as a program or a shell script. 
-The 'transition' class is used to trigger a device transition.
+**class** : Must be one of **shell | transition** The 'shell' class is used to trigger an operating system call, such as a program or a shell script. The 'transition' class is used to trigger a platform device transition.
 
 **command** : The command is a JSON object which defines the actual instruction to be carried out. It may contain these fields:
 * **execute** : In a transition class, it is the device transition name. In shell class it is the shell program name itself.
