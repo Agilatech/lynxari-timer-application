@@ -1,6 +1,6 @@
 {
   "name": "@agilatech/lynxari-timer-application",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Lynxari Server App for controling devices on a timed schedule",
   "main": "loader.js",
   "repository": {
